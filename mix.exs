@@ -45,6 +45,7 @@ defmodule AirQualityMonitor.MixProject do
       {:toolshed, "~> 0.2"},
 
       # Dependencies for all targets except :host
+      {:circuits_uart, "~> 1.4", targets: @all_targets},
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
       {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
 

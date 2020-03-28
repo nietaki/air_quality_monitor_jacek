@@ -45,11 +45,20 @@ config :nerves_firmware_ssh,
 node_name = if Mix.env() != :prod, do: "air_quality_monitor"
 
 config :nerves_init_gadget,
-  ifname: "usb0",
-  address_method: :dhcpd,
-  mdns_domain: "nerves.local",
+  ifname: "wlan0",
+  address_method: :dhcp,
+  mdns_domain: "jacek.local",
   node_name: node_name,
   node_host: :mdns_domain
+
+key_mgmt = :"WPA-PSK"
+
+config :nerves_network, :default,
+  wlan0: [
+    ssid: System.get_env("NERVES_NETWORK_SSID"),
+    psk: System.get_env("NERVES_NETWORK_PSK"),
+    key_mgmt: key_mgmt
+  ]
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

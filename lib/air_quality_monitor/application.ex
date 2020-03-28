@@ -30,6 +30,7 @@ defmodule AirQualityMonitor.Application do
 
   def children(_target) do
     [
+      {AirQualityMonitor.Monitor, []}
       # Children for all targets except host
       # Starts a worker by calling: AirQualityMonitor.Worker.start_link(arg)
       # {AirQualityMonitor.Worker, arg},
